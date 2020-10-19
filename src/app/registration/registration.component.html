@@ -1,0 +1,101 @@
+<mat-grid-list cols="1" rowHeight="600px">
+    <mat-grid-tile>
+        <div class="example-container">
+          <mat-grid-tile-header>
+            
+            <h1 class="mat-grid-list-text">Registration Form</h1>
+          </mat-grid-tile-header>
+          <div [formGroup]="registrationForm">
+            <mat-form-field appearance="fill" class="form-field width-50">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="FirstName" required>
+              <mat-error *ngIf="registrationForm.controls.FirstName.touched && registrationForm.controls.FirstName.invalid">
+                <span *ngIf="registrationForm.controls.FirstName.errors.required">This field is mandatory.</span>
+              </mat-error>
+              
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill" class="form-field width-50 ml-2">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" required>
+              <mat-error *ngIf="registrationForm.controls.lastName.touched && registrationForm.controls.lastName.invalid">
+                <span *ngIf="registrationForm.controls.lastName.errors.required">This field is mandatory.</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" class="form-field width-100">
+              <mat-label>User Name</mat-label>
+              <input matInput formControlName="UserName"  required>
+              <mat-error *ngIf="registrationForm.controls.UserName.touched && registrationForm.controls.UserName.invalid">
+                <span *ngIf="registrationForm.controls.UserName.errors.required">This field is mandatory.</span>
+                <span *ngIf="registrationForm.controls.UserName.errors.minlength">Field Required Minimum 6 Characters.</span>
+
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" class="width-100">
+              <mat-label>Email address</mat-label>
+              <input matInput formControlName="email" placeholder="Ex. pat@example.com" required>
+              <mat-error *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.invalid">
+              <span *ngIf="registrationForm.controls.email.errors.required">This field is mandatory.</span>
+              <span *ngIf="registrationForm.controls.email.errors.pattern">This field is invalid.</span>
+            </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" class="form-field width-50">
+              <mat-label>Enter password</mat-label>
+              <input matInput formControlName="password" [type]="hide ? 'password':'text'" required/>
+                <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="registrationForm.controls.password.touched && registrationForm.controls.password.invalid">
+                  <span *ngIf="registrationForm.controls.password.errors.required">This field is mandatory.</span>
+                </mat-error>
+                
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="width-50 ml-2">
+              <mat-label>Confirm password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'">
+             
+            </mat-form-field>
+            <br>
+            <label >Gender: </label> &nbsp;&nbsp;
+            <mat-radio-group aria-label="Select an option" >
+              <mat-radio-button value="1">Male</mat-radio-button>
+              <mat-radio-button class="example-radio-button" value="2">Female</mat-radio-button>
+              <mat-radio-button class="example-radio-button" value="3">Other</mat-radio-button>
+            </mat-radio-group>
+            <br>  
+            <label id="example-ch-group-label">Languages: </label> &nbsp;&nbsp;
+              <mat-checkbox class="example-checkbox" value="1">English</mat-checkbox>&nbsp;
+              <mat-checkbox class="example-checkbox" value="2">Hindi</mat-checkbox>&nbsp;
+              <mat-checkbox class="example-checkbox" value="3">Telugu</mat-checkbox>&nbsp;
+              <br>       
+            <mat-form-field  appearance="fill" class="width-50">
+              <mat-label>Enter Date of Birth</mat-label>
+                <input matInput [matDatepicker]="myDatepicker" >
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill" class="width-50 ml-2">
+              <mat-label>Country</mat-label>
+              <mat-select>
+                <mat-option [value]="6">India</mat-option>
+                <mat-option [value]="6">America</mat-option>
+                <mat-option [value]="6">Pakistan</mat-option>
+                <mat-option [value]="6">Srilanka</mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+            <br>
+              <mat-slide-toggle>Accept all the terms and conditions!</mat-slide-toggle><br>
+  
+          </div>
+          
+                      <button mat-button type="signUp" class="mat-raised-button mat-primary" (click)="signup()" >Sign up</button>
+            <mat-grid-tile-footer class="mat-grid-list-text">
+              <button mat-button [routerLink]="['/login']" >Go Back to Login page</button>
+            </mat-grid-tile-footer>
+        </div>
+    </mat-grid-tile>
+    </mat-grid-list>
+   
