@@ -23,10 +23,6 @@ export class RegistrationComponent implements OnInit {
         UserName:  [null, [Validators.required, Validators.minLength(4)]],
     });
   }
-  // tslint:disable-next-line:typedef
-//   get UserName() {
-//     return this.registrationForm.get('userName');
-// }
 signup(): void {
   if (!this.registrationForm.valid) {
     return;
